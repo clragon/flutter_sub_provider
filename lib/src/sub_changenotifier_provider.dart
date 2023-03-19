@@ -8,31 +8,25 @@ import 'package:provider/provider.dart';
 /// {@macro subprovider.subchangenotifierprovider}
 class SubChangeNotifierProvider0<R extends ChangeNotifier>
     extends SubListenableProvider0<R> {
-  /// Manages a ChangeNotifier and exposes it to its descendants.
+  /// {@macro subprovider.subchangenotifierprovider}
   SubChangeNotifierProvider0({
-    super.key,
-    super.child,
-    super.builder,
     required super.create,
     super.update,
     super.keys,
+    super.builder,
+    super.child,
   }) : super(
           dispose: (context, value) => value.dispose(),
         );
 
   @override
-  Widget buildWithChild(BuildContext context, Widget? child) =>
-      SubValue<R>.builder(
-        create: create,
-        keys: keys,
-        update: update,
-        dispose: dispose,
-        builder: (context, value) => ChangeNotifierProvider.value(
-          value: value,
-          builder: builder,
-          child: child,
-        ),
-      );
+  Widget buildWithValue(BuildContext context, R value, Widget? child) {
+    return ChangeNotifierProvider.value(
+      value: value,
+      builder: builder,
+      child: child,
+    );
+  }
 }
 
 /// {@template subprovider.subchangenotifierprovider}
@@ -73,12 +67,11 @@ class SubChangeNotifierProvider<T, R extends ChangeNotifier>
     extends SubChangeNotifierProvider0<R> {
   /// Manages a ChangeNotifier and exposes it to its descendants.
   SubChangeNotifierProvider({
-    super.key,
-    super.child,
-    super.builder,
     required SubProviderCreate<T, R> create,
     SubProviderUpdate<T, R>? update,
     SubValueBuilderKeys? keys,
+    super.builder,
+    super.child,
   }) : super(
           create: (context) => create(
             context,
@@ -100,12 +93,11 @@ class SubChangeNotifierProvider2<T, T2, R extends ChangeNotifier>
     extends SubChangeNotifierProvider<T, R> {
   /// Manages a ChangeNotifier and exposes it to its descendants.
   SubChangeNotifierProvider2({
-    super.key,
-    super.child,
-    super.builder,
     required SubProviderCreate2<T, T2, R> create,
     SubProviderUpdate2<T, T2, R>? update,
     SubValueBuilderKeys? keys,
+    super.builder,
+    super.child,
   }) : super(
           create: (context, value) => create(
             context,
@@ -125,12 +117,11 @@ class SubChangeNotifierProvider3<T, T2, T3, R extends ChangeNotifier>
     extends SubChangeNotifierProvider2<T, T2, R> {
   /// Manages a ChangeNotifier and exposes it to its descendants.
   SubChangeNotifierProvider3({
-    super.key,
-    super.child,
-    super.builder,
     required SubProviderCreate3<T, T2, T3, R> create,
     SubProviderUpdate3<T, T2, T3, R>? update,
     SubValueBuilderKeys? keys,
+    super.builder,
+    super.child,
   }) : super(
           create: (context, value, value2) => create(
             context,
@@ -151,12 +142,11 @@ class SubChangeNotifierProvider4<T, T2, T3, T4, R extends ChangeNotifier>
     extends SubChangeNotifierProvider3<T, T2, T3, R> {
   /// Manages a ChangeNotifier and exposes it to its descendants.
   SubChangeNotifierProvider4({
-    super.key,
-    super.child,
-    super.builder,
     required SubProviderCreate4<T, T2, T3, T4, R> create,
     SubProviderUpdate4<T, T2, T3, T4, R>? update,
     SubValueBuilderKeys? keys,
+    super.builder,
+    super.child,
   }) : super(
           create: (context, value, value2, value3) => create(
             context,
@@ -178,12 +168,11 @@ class SubChangeNotifierProvider5<T, T2, T3, T4, T5, R extends ChangeNotifier>
     extends SubChangeNotifierProvider4<T, T2, T3, T4, R> {
   /// Manages a ChangeNotifier and exposes it to its descendants.
   SubChangeNotifierProvider5({
-    super.key,
-    super.child,
-    super.builder,
     required SubProviderCreate5<T, T2, T3, T4, T5, R> create,
     SubProviderUpdate5<T, T2, T3, T4, T5, R>? update,
     SubValueBuilderKeys? keys,
+    super.builder,
+    super.child,
   }) : super(
           create: (context, value, value2, value3, value4) => create(
             context,
@@ -213,12 +202,11 @@ class SubChangeNotifierProvider6<T, T2, T3, T4, T5, T6,
     extends SubChangeNotifierProvider5<T, T2, T3, T4, T5, R> {
   /// Manages a ChangeNotifier and exposes it to its descendants.
   SubChangeNotifierProvider6({
-    super.key,
-    super.child,
-    super.builder,
     required SubProviderCreate6<T, T2, T3, T4, T5, T6, R> create,
     SubProviderUpdate6<T, T2, T3, T4, T5, T6, R>? update,
     SubValueBuilderKeys? keys,
+    super.builder,
+    super.child,
   }) : super(
           create: (context, value, value2, value3, value4, value5) => create(
             context,

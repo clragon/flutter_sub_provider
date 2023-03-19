@@ -1,51 +1,33 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_sub/developer.dart';
 import 'package:flutter_sub/flutter_sub.dart';
+import 'package:flutter_sub_provider/src/single_child_sub_value.dart';
 import 'package:flutter_sub_provider/src/types.dart';
 import 'package:provider/provider.dart';
-import 'package:provider/single_child_widget.dart';
 
 /// {@macro subprovider.subprovider}
-class SubProvider0<R> extends SingleChildStatelessWidget {
+class SubProvider0<R> extends SingleChildSubValue<R> {
   /// {@macro subprovider.subprovider}
   const SubProvider0({
-    super.key,
-    super.child,
+    required super.create,
+    super.update,
+    super.keys,
+    super.dispose,
     this.builder,
-    required this.create,
-    this.update,
-    this.keys,
-    this.dispose,
+    super.child,
   });
 
-  final Widget Function(BuildContext context, Widget? child)? builder;
-
-  /// Creates the value. Called at least once and everytime [keys] changes.
-  final SubValueBuilderCreate<R> create;
-
-  /// Updates the value. Called every build. If null, does nothing.
-  /// In the call order, this comes after recreating the value.
-  final SubValueBuilderUpdate<R>? update;
-
-  /// Used to decide when to recreate the value. If null, the value is never recreated.
-  final SubValueBuilderKeys? keys;
-
-  /// Disposes the value. Called before recreation and when disposing. Useful for Listeners, etc.
-  final SubValueBuilderDispose<R>? dispose;
+  /// Builds the child of this Widget.
+  final TransitionBuilder? builder;
 
   @override
-  Widget buildWithChild(BuildContext context, Widget? child) =>
-      SubValue<R>.builder(
-        create: create,
-        keys: keys,
-        update: update,
-        dispose: dispose,
-        builder: (context, value) => Provider.value(
-          value: value,
-          builder: builder,
-          child: child,
-        ),
-      );
+  Widget buildWithValue(BuildContext context, R value, Widget? child) {
+    return Provider<R>.value(
+      value: value,
+      builder: builder,
+      child: child,
+    );
+  }
 }
 
 /// {@template subprovider.subprovider}
@@ -87,13 +69,12 @@ class SubProvider0<R> extends SingleChildStatelessWidget {
 class SubProvider<T, R> extends SubProvider0<R> {
   /// Manages a Value T and exposes it to its descendants.
   SubProvider({
-    super.key,
-    super.child,
-    super.builder,
     required SubProviderCreate<T, R> create,
     SubProviderUpdate<T, R>? update,
     SubValueBuilderKeys? keys,
     super.dispose,
+    super.builder,
+    super.child,
   }) : super(
           create: (context) => create(
             context,
@@ -114,13 +95,12 @@ class SubProvider<T, R> extends SubProvider0<R> {
 class SubProvider2<T, T2, R> extends SubProvider<T, R> {
   /// Manages a Value T and exposes it to its descendants.
   SubProvider2({
-    super.key,
-    super.child,
-    super.builder,
     required SubProviderCreate2<T, T2, R> create,
     SubProviderUpdate2<T, T2, R>? update,
     SubValueBuilderKeys? keys,
     super.dispose,
+    super.builder,
+    super.child,
   }) : super(
           create: (context, value) => create(
             context,
@@ -139,13 +119,12 @@ class SubProvider2<T, T2, R> extends SubProvider<T, R> {
 class SubProvider3<T, T2, T3, R> extends SubProvider2<T, T2, R> {
   /// Manages a Value T and exposes it to its descendants.
   SubProvider3({
-    super.key,
-    super.child,
-    super.builder,
     required SubProviderCreate3<T, T2, T3, R> create,
     SubProviderUpdate3<T, T2, T3, R>? update,
     SubValueBuilderKeys? keys,
     super.dispose,
+    super.builder,
+    super.child,
   }) : super(
           create: (context, value, value2) => create(
             context,
@@ -165,12 +144,11 @@ class SubProvider3<T, T2, T3, R> extends SubProvider2<T, T2, R> {
 class SubProvider4<T, T2, T3, T4, R> extends SubProvider3<T, T2, T3, R> {
   /// Manages a Value T and exposes it to its descendants.
   SubProvider4({
-    super.key,
-    super.child,
-    super.builder,
     required SubProviderCreate4<T, T2, T3, T4, R> create,
     SubProviderUpdate4<T, T2, T3, T4, R>? update,
     SubValueBuilderKeys? keys,
+    super.builder,
+    super.child,
     super.dispose,
   }) : super(
           create: (context, value, value2, value3) => create(
@@ -193,13 +171,12 @@ class SubProvider5<T, T2, T3, T4, T5, R>
     extends SubProvider4<T, T2, T3, T4, R> {
   /// Manages a Value T and exposes it to its descendants.
   SubProvider5({
-    super.key,
-    super.child,
-    super.builder,
     required SubProviderCreate5<T, T2, T3, T4, T5, R> create,
     SubProviderUpdate5<T, T2, T3, T4, T5, R>? update,
     SubValueBuilderKeys? keys,
     super.dispose,
+    super.builder,
+    super.child,
   }) : super(
           create: (context, value, value2, value3, value4) => create(
             context,
@@ -228,13 +205,12 @@ class SubProvider6<T, T2, T3, T4, T5, T6, R>
     extends SubProvider5<T, T2, T3, T4, T5, R> {
   /// Manages a Value T and exposes it to its descendants.
   SubProvider6({
-    super.key,
-    super.child,
-    super.builder,
     required SubProviderCreate6<T, T2, T3, T4, T5, T6, R> create,
     SubProviderUpdate6<T, T2, T3, T4, T5, T6, R>? update,
     SubValueBuilderKeys? keys,
     super.dispose,
+    super.builder,
+    super.child,
   }) : super(
           create: (context, value, value2, value3, value4, value5) => create(
             context,
