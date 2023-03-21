@@ -87,7 +87,7 @@ class SubProvider<T, R> extends SubProvider0<R> {
                     previous,
                   )
               : null,
-          keys: (context) => [Provider.of<T>(context), keys?.call(context)],
+          keys: (context) => [Provider.of<T>(context), ...?keys?.call(context)],
         );
 }
 
@@ -111,7 +111,8 @@ class SubProvider2<T, T2, R> extends SubProvider<T, R> {
               ? (context, value, previous) =>
                   update(context, value, Provider.of<T2>(context), previous)
               : null,
-          keys: (context) => [Provider.of<T2>(context), keys?.call(context)],
+          keys: (context) =>
+              [Provider.of<T2>(context), ...?keys?.call(context)],
         );
 }
 
@@ -136,7 +137,8 @@ class SubProvider3<T, T2, T3, R> extends SubProvider2<T, T2, R> {
               ? (context, value, value2, previous) => update(
                   context, value, value2, Provider.of<T3>(context), previous)
               : null,
-          keys: (context) => [Provider.of<T3>(context), keys?.call(context)],
+          keys: (context) =>
+              [Provider.of<T3>(context), ...?keys?.call(context)],
         );
 }
 
@@ -162,7 +164,8 @@ class SubProvider4<T, T2, T3, T4, R> extends SubProvider3<T, T2, T3, R> {
               ? (context, value, value2, value3, previous) => update(context,
                   value, value2, value3, Provider.of<T4>(context), previous)
               : null,
-          keys: (context) => [Provider.of<T4>(context), keys?.call(context)],
+          keys: (context) =>
+              [Provider.of<T4>(context), ...?keys?.call(context)],
         );
 }
 
@@ -196,7 +199,8 @@ class SubProvider5<T, T2, T3, T4, T5, R>
                   Provider.of<T5>(context),
                   previous)
               : null,
-          keys: (context) => [Provider.of<T5>(context), keys?.call(context)],
+          keys: (context) =>
+              [Provider.of<T5>(context), ...?keys?.call(context)],
         );
 }
 
@@ -226,6 +230,7 @@ class SubProvider6<T, T2, T3, T4, T5, T6, R>
                   update(context, value, value2, value3, value4, value5,
                       Provider.of<T6>(context), previous)
               : null,
-          keys: (context) => [Provider.of<T6>(context), keys?.call(context)],
+          keys: (context) =>
+              [Provider.of<T6>(context), ...?keys?.call(context)],
         );
 }

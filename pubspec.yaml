@@ -1,6 +1,6 @@
 name: flutter_sub_provider
 description: Sane Provider-Provider dependencies with flutter_sub. A smart alternative to ProxyProvider.
-version: 0.2.0
+version: 0.3.0
 repository: https://github.com/clragon/flutter_sub_provider
 
 environment:

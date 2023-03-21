@@ -55,7 +55,7 @@ class SubListenableProvider<T, R extends Listenable>
                     previous,
                   )
               : null,
-          keys: (context) => [Provider.of<T>(context), keys?.call(context)],
+          keys: (context) => [Provider.of<T>(context), ...?keys?.call(context)],
         );
 }
 
@@ -80,7 +80,8 @@ class SubListenableProvider2<T, T2, R extends Listenable>
               ? (context, value, previous) =>
                   update(context, value, Provider.of<T2>(context), previous)
               : null,
-          keys: (context) => [Provider.of<T2>(context), keys?.call(context)],
+          keys: (context) =>
+              [Provider.of<T2>(context), ...?keys?.call(context)],
         );
 }
 
@@ -106,7 +107,8 @@ class SubListenableProvider3<T, T2, T3, R extends Listenable>
               ? (context, value, value2, previous) => update(
                   context, value, value2, Provider.of<T3>(context), previous)
               : null,
-          keys: (context) => [Provider.of<T3>(context), keys?.call(context)],
+          keys: (context) =>
+              [Provider.of<T3>(context), ...?keys?.call(context)],
         );
 }
 
@@ -133,7 +135,8 @@ class SubListenableProvider4<T, T2, T3, T4, R extends Listenable>
               ? (context, value, value2, value3, previous) => update(context,
                   value, value2, value3, Provider.of<T4>(context), previous)
               : null,
-          keys: (context) => [Provider.of<T4>(context), keys?.call(context)],
+          keys: (context) =>
+              [Provider.of<T4>(context), ...?keys?.call(context)],
         );
 }
 
@@ -167,7 +170,8 @@ class SubListenableProvider5<T, T2, T3, T4, T5, R extends Listenable>
                   Provider.of<T5>(context),
                   previous)
               : null,
-          keys: (context) => [Provider.of<T5>(context), keys?.call(context)],
+          keys: (context) =>
+              [Provider.of<T5>(context), ...?keys?.call(context)],
         );
 }
 
@@ -197,6 +201,7 @@ class SubListenableProvider6<T, T2, T3, T4, T5, T6, R extends Listenable>
                   update(context, value, value2, value3, value4, value5,
                       Provider.of<T6>(context), previous)
               : null,
-          keys: (context) => [Provider.of<T6>(context), keys?.call(context)],
+          keys: (context) =>
+              [Provider.of<T6>(context), ...?keys?.call(context)],
         );
 }

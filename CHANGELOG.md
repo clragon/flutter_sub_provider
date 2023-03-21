@@ -1,3 +1,7 @@
+## 0.3.0
+
+- Fix keys unpacking
+
 ## 0.2.0
 
 - Fix developer library
