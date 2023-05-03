@@ -1,6 +1,5 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_sub_provider/flutter_sub_provider.dart';
-import 'package:flutter_sub_provider/src/sub_listenable_provider.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'mock.dart';
