@@ -8,4 +8,5 @@ import 'package:provider/single_child_widget.dart';
 
 export 'package:provider/single_child_widget.dart';
 
+export 'src/single_child_sub_value.dart';
 export 'src/types.dart';
