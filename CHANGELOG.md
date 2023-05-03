@@ -1,3 +1,7 @@
+## 2.0.0
+
+- Upgraded flutter_sub to version 2
+
 ## 1.0.0
 
 - Added SubFutureProvider
