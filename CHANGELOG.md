@@ -1,3 +1,10 @@
+## 1.0.0
+
+- Added SubFutureProvider
+- Added SubStreamProvider
+- Added SubListenableProvider
+- Added SingleChildSubValue
+
 ## 0.3.0
 
 - Fix keys unpacking
