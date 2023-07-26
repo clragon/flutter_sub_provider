@@ -46,18 +46,18 @@ class MyWidget extends StatelessWidget {
 
 In the `ProxyProvider` example, dependencies are side-loaded through a setter, and the `PaginationController` is updated in-place when the `HttpClient` changes.
 
-The approach of SubProvider is for several reasons.
+The approach of SubProvider is preferable for several reasons:
 
 - The dependencies are injected through the constructor instead of through a setter. This ensures our controller is always created in a valid state.
 - The internal state of the controller is reset when the http client changes. This ensures that we don't have any stale data from the previous http client.
-- The http client can be final and or private. The controller retains control over its variables.
+- The http client can be final and / or private. The controller retains control over its variables.
 
 ## Principles
 
 Much like `flutter_sub`, is built around the concept of Subs - compact versions of StatefulWidgets that create, update, and dispose of a value.  
 `flutter_sub_provider` extends this concept by integrating with `provider` to create SubProviders.
 
-SubProviders extends the corresponding Provider type and add the ability to manage dependencies.  
+SubProviders extend the corresponding Provider type and add the ability to manage dependencies.  
 When a dependency changes, the SubProvider fully recreates its managed object, ensuring that it always operates on the latest dependencies.
 
 For simplicity, you can imagine a SubProvider to look somewhat like this (in reality, it's a bit more complicated):
@@ -117,4 +117,4 @@ class PaginationControllerProvider extends SubProvider<HttpClient, PaginationCon
 | [SubFutureProvider](./lib/src/sub_future_provider.dart)                 | Creates and listens to a `Future` based on a dependency and exposes its result to its descendants.  |
 | [SubStreamProvider](./lib/src/sub_stream_provider.dart)                 | Creates and listens to a `Stream` based on a dependency and exposes its content to its descendants. |
 
-Each SubProvider comes in versions 0-6, which can manage the according amount of dependencies respectively.
+Each SubProvider comes in versions 0-6, which can manage the corresponding amount of dependencies, respectively.
