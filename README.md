@@ -54,13 +54,13 @@ The approach of SubProvider is preferable for several reasons:
 
 ## Principles
 
-Much like `flutter_sub`, is built around the concept of Subs - compact versions of StatefulWidgets that create, update, and dispose of a value.  
-`flutter_sub_provider` extends this concept by integrating with `provider` to create SubProviders.
+`flutter_sub_provider` uses `flutter_sub`'s concept of a Sub, a compact versions of StatefulWidgets that create, update, and dispose of a value,
+and combines it with `provider` to create SubProviders.
 
-SubProviders extend the corresponding Provider type and add the ability to manage dependencies.  
-When a dependency changes, the SubProvider fully recreates its managed object, ensuring that it always operates on the latest dependencies.
+SubProviders extend the corresponding Provider type and add the ability to handle changing dependencies.  
+When a dependency updates, the SubProvider fully recreates its managed object, ensuring that it always operates on the latest dependencies.
 
-For simplicity, you can imagine a SubProvider to look somewhat like this (in reality, it's a bit more complicated):
+For simplicity, you can imagine a SubProvider to look somewhat like this:
 
 ```dart
 class SubProvider<T, R> extends StatelessWidget {
