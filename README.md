@@ -92,6 +92,8 @@ This code is heavily simplified. To see the full implementation, you can check o
 You can directly use all of the inbuilt SubProviders in your tree.
 It is also possible to extend SubProvider to create your own reusable SubProviders.
 
+You can get access to `SingleChildSubValue` and other internal types by importing `package:flutter_sub_provider/developer.dart`.
+
 To create a reusable SubProvider from our example earlier, we can do the following:
 
 ```dart
